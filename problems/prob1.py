@@ -17,8 +17,6 @@ def portfolioWorth(holdings):
    
     return stockWorth
 
-print(portfolioWorth([ ['AAPL', 160.23, 10], ['TSLA', 680.34, 24], ['MSFT', 250, 6], ['SQ', 274, 5], ['GME', 275, 23] ]))
-print("\n\n")
 
 # PROBLEM 2:
 # Given two arrays, write a function that returns the overall dollar($) and percent(%) gain/loss
@@ -30,35 +28,22 @@ print("\n\n")
 
 #Note, gain is equal to (current-purchase) for $ and (current-purchase)/purchase for %
 
-def gain(currentValue, purchaseValue):
+def gain(currentValue, purchaseValue):    
+    totalworth = 0
+    originalworth = 0
+
+    for currentstock, purchasedstock in zip(currentValue, purchaseValue):
+        originalworth += purchasedstock[1] * currentstock[2]
+        totalworth += currentstock[1] * currentstock[2]
+
+    return (totalworth - originalworth), ((totalworth - originalworth)*100/originalworth)
+
+def main():
+    print(portfolioWorth([ ['AAPL', 160.23, 10], ['TSLA', 680.34, 24], ['MSFT', 250, 6], ['SQ', 274, 5], ['GME', 275, 23] ]))
     
-    curValStocks = []
-    purValStocks = []
-    overallGain = []
-    percentGain = []
+    currentValue = [ ['AAPL', 160.23, 10], ['TSLA', 680.34, 24], ['MSFT', 250, 6], ['SQ', 274, 5], ['GME', 275, 23] ]
+    purchaseValue = [ ['AAPL', 98], ['TSLA', 245], ['MSFT', 341], ['SQ', 255], ['GME', 275] ]
+    print(gain(currentValue, purchaseValue))
 
-    for i in range(len(purchaseValue)):
-        purValStocks.append(purchaseValue[i][1])
-        curValStocks.append(currentValue[i][1])
-        overallGain.append((curValStocks[i] - purValStocks[i]))
-        percentGain.append(overallGain[i]/purValStocks[i])
-
-    portfolioPurVal = 0
-    totalWorth = 0
-
-    for i in range(len(currentValue)):
-        totalWorth += currentValue[i][1] * currentValue[i][2]
-
-    for i in range(len(purchaseValue)):
-        portfolioPurVal += purValStocks[i]*currentValue[i][2]
-
-    print("Value of original portfolio is:\n${:,}".format(portfolioPurVal))
-    print("Overall gain on portfolio is:\n${:,}".format(totalWorth - portfolioPurVal))
-    print("Overall percent gain on portfolio is:\n{:.2f}%".format((totalWorth - portfolioPurVal)*100/portfolioPurVal))
-    print("\n")
-
-    return overallGain, percentGain
-
-currentValue = [ ['AAPL', 160.23, 10], ['TSLA', 680.34, 24], ['MSFT', 250, 6], ['SQ', 274, 5], ['GME', 275, 23] ]
-purchaseValue = [ ['AAPL', 98], ['TSLA', 245], ['MSFT', 341], ['SQ', 255], ['GME', 275] ]
-print(gain(currentValue, purchaseValue))
+if __name__ == "__main__":
+    main()
