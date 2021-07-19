@@ -153,14 +153,57 @@ def main():
     resultJohnny += savingsJohnny
     print("Johnny's initial investment grew to ${:,.2f}".format(resultJohnny))
     
+    #-----------------------------------
+    # 5 - Challenge Problem
+    # Lisa's circumstances:
+    # - She purchased $12,000 worth of stock in the beginning of 2020, BUT:
+    # - if the stock drops BELOW 8% from previous day's close, she sells half of her stock
+    # - she will then RE-INVEST if the stock recovers to when she had sold it
+    # How much is his investment worth at the end of 2020?
+    #-----------------------------------
+
+    #Lisa Starting Amount        
+    LisaPortfolio = 12000
+
+    #variables that describe the price we sold the stock at, how much we sold, and a tester variable
+    sellStockPrice = 0
+    sellAmt = 0
+    j = 0
+
+    #loop through the entire dataframe
+    for i in range(1, len(openCol)-1):
+        
+        #update value of portfolio each time a market day elapses
+        LisaPortfolio += LisaPortfolio * (openCol[i] - closeCol[i-1])/closeCol[i-1]
+        print(LisaPortfolio)
+
+        #if stock drops 8% or more in a day...
+        if((openCol[i] - closeCol[i-1]) / closeCol[i-1] <= -0.08):
+                #keep track of the price we sold the stock at
+                sellStockPrice = openCol[i]
+                #keep track of the amount of our portfolio we sold (half)
+                sellAmt = LisaPortfolio / 2
+                #update lisa's portfolio by subtracting the amount we sold (the half amount)
+                LisaPortfolio = LisaPortfolio - sellAmt
+                #make a count for when the stock drops 8%
+                j+=1
+
+
+        #if stock returns to previous price, buy back amount previously sold 
+        if((openCol[i] >= sellStockPrice) and j ==1):
+            #add back the amount we sold to our portfolio so it can earn interest again
+            LisaPortfolio += sellAmt
+            #reset j to zero
+            j = 0
+
+    print("Lisa's initial investment grew to ${:,.2f}".format(LisaPortfolio))
     
-            
-
-    
-    
-
-
-
+    #THE PROBLEM WITH THE CODE FOR QUESTION 5:
+    # This code only works because there are no two consecutive days where the stock can drop by 8%
+    # The issue with the code and why it does not solve the problem mentioned is because I don't have a way to track
+    # more than one drop, and then a way to also track when the stock recovers back to these multiple values
+    #
+    # need to think of a way to solve the consecutive 8% drop days
 
 
 if __name__ == "__main__":
