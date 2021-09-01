@@ -1,13 +1,9 @@
 # RateMyStocks
-Portfolio Ranking Software that displays different portfolio of stonks.
-RMS algorithm ranks porfolio by few criterias: i) ROI, ii) duration of holding, iii) portfolio size, and more.
-
-## How Does The Point System Work?
-Every ape starts with the same number of money. So I don't want to hear about income inequality and lack of opportunities.
-If your stonks goes to the moon, so do your points. If your stonks dip, so do your points.
-The dashboard gives you an birds-eye-view of what your holdings are as well as other stonks you want to see.
+RMS is an investment simulation application that tracks different behaviors of investors.
+The simulation assumes they start with same amount of cash and investment time period. At termination, the application shows the investor with the optimal strategy.
 
 ## Why should I use RateMyStocks?
-Paperhanding can be fun if it's done with friends.
+If you want to find out what the best investment strategy and the worst over a time frame, RateMyStocks reveals the efficiency of people's tendencies when it comes to investing. Some people invest with emotion, while other stick to a discipline. This application illustrates all varying investment outcomes.
 
 ## How Do I Get Started?
+Download the repository and run the application in the main file.

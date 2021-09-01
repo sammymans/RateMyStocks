@@ -4,16 +4,13 @@ import pandas_datareader.data as web
 import datetime
 
 import pandas as pd
-
 import mysql.connector
-
 import csv
-
 from sqlalchemy import create_engine
 
 # First, we need to read all of the ticker symbols from the excel that I created
 symbol = []
-a = 'ExhangeSymbols.csv'
+a = 'ExchangeSymbols.csv'
 b = 'short_stock_symbol_list.txt'
 with open(b) as f:
     for line in f:
@@ -31,7 +28,8 @@ enddate = datetime.date(2021,1,1)
 # Make a file path to where we will save our csv
 # We will work with the csv and SQL
 
-path_out = 'C:/Users/sfarn/Documents/Programming/Personal Projects/RateMyStonks/PythonToSQL/'
+# path_out = 'C:/Users/sfarn/Documents/Programming/Personal Projects/RateMyStonks/PythonToSQL/'
+# path_out = './'
 file_out = 'yahoo_prices_volumes_for_RateMyStonks.csv'
  
 # Loop through tickers in symbol list
@@ -108,11 +106,3 @@ for i, row in df.iterrows():
     """
     cursor.execute(sql, tuple(row))
     connection.commit()
-
-
-
-
-
-
-            
-
