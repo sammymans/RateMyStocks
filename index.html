@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light p-3" style="background-color: #1f2029;"> 
+            <j class="navbar-brand" href="#" style="color:#efefef; font-size: 18px;"><b>RateMyStocks <span style="color: green;">✓</span></b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row h-100">
+                <div id="input" class="col-md-3 pt-3">
+                    <h5 style="color: #eaeaea">STOCK INFORMATION</h5>
+                    <hr style="height:2px; border-width:0; color:#efefef; background-color:#efefef">
+                    <span style="font-size: 16px;">Ticker Symbol</span>
+                    <div class="input-group mb-1 mt-2">
+                        <input style="font-size: 20px;font-weight:bold;padding-top: 18px;padding-bottom: 18px;" id="ticker" type="text" class="form-control" placeholder="Ticker" value="GOOG" aria-label="sticker" aria-describedby="basic-addon2">
+                    </div>
+                    <br />
+                    <span style="font-size: 16px;">Time Horizon</span>
+                    <div class="input-group mb-1 mt-2">
+                        <input style="font-size: 13px;font-weight:bold; text-align: center;" type="date" class="form-control" id="start" value="2019-01-01"/>
+                        <input style="font-size: 13px;font-weight:bold; text-align: center;;" type="date" class="form-control" id="end" value="2022-06-09"/>
+                    </div>
+
+
+                    <br /> 
+
+                    <div class="row justify-content-center">
+                        <button type="button" id="Load" class="btn btn-lg" style="background-color:#bc7ff3; color:white;">INVEST</button>
+                    </div>
+
+
+                    <br/>
+                    <h5 style="color: #eaeaea">INVESTMENT STRATEGY</h5>
+                    <hr style="height:2px; border-width:0; color:#efefef; background-color:#efefef">
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="DCA" checked>
+                    <label class="form-check-label" for="exampleRadios1" style="font-size: 15px;">
+                        Dollar Cost Average
+                    </label>
+                    </div>
+                    <div class="form-check pt-2">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="5PDIP">
+                    <label class="form-check-label" for="exampleRadios2" style="font-size: 15px;">
+                        Buy The 5% Dip
+                    </label>
+                    </div>
+                    <div class="form-check pt-2">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="BUYANDHOLD">
+                    <label class="form-check-label" for="exampleRadios3" style="font-size: 15px;">
+                        Buy and Hold
+                    </label>
+                    </div>
+
+                    <div class="input-group pt-5">
+                        <h5>Summary</h5>
+                    </div>
+                    <hr style="height:3px; border-width:0; color:#efefef; background-color:#efefef">
+
+                    <p id="summary">Contents of the summary</p>
+
+                </div>
+
+                <div id="chart" class="col-md-9 pt-3">
+                    <p id="tickertitle">Stock Ticker</p>
+                    <canvas id="myChart"></canvas>
+                    <script type="text/javascript" src="chartloader.js"></script>
+                    <script>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
